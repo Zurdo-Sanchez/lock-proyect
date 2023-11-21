@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/configure.css" />
+    <link rel="stylesheet" href="../assets/css/lock.css" />
+
+    <title>Virtual Lock - Configuration Wizard</title>
+  </head>
+  <body>
+    <h1 class="principalTytle">Configuration Wizard</h1>
+    <div class="principalContainer">
+      <div class="container mt-3 dataContainer">
+        <h1 class="principalTytle">Data</h1>
+        <form id="lockConfigForm">
+          <div class="groupcontainer">
+            <div class="mb-3 lockImage">
+              <label for="lockTitle" class="form-label"
+                >Title of the lock (*)</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="lockTitle"
+                maxlength="255"
+                required
+              />
+            </div>
+
+            <div class="mb-3 lockImage">
+              <label for="lockCombination" class="form-label"
+                >Combination of the lock</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="lockCombination"
+                maxlength="10"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="lockText" class="form-label"
+              >Text of the lock hint (*)</label
+            >
+            <textarea
+              class="form-control"
+              id="lockText"
+               rows="2"
+              required
+            ></textarea>
+          </div>
+          <div class="groupcontainer">
+            <div class="mb-3 lockImage">
+              <label for="lockImage" class="form-label"
+                >Lock hint image URL (*)</label
+              >
+              <input type="url" class="form-control" id="lockImage" required />
+            </div>
+
+            <div class="mb-3 lockImage">
+              <label for="lockImageSize" class="form-label"
+                >Lock hint image size</label
+              >
+              <input type="text" class="form-control" id="lockImageSize" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lockButtonText" class="form-label"
+              >Lock solving button text (*)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="lockButtonText"
+              maxlength="255"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="lockOkMessage" class="form-label"
+              >Message for combination OK</label
+            >
+            <textarea
+              class="form-control"
+              id="lockOKText"
+               rows="2"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="lockOkRedirect" class="form-label"
+              >URL for combination OK redirection</label
+            >
+            <input
+              type="url"
+              class="form-control"
+              id="lockOkRedirect"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="lockFailMessage" class="form-label"
+              >Message for combination failure</label
+            >
+            <textarea
+              class="form-control"
+              id="lockFailText"
+               rows="2"
+              required
+            ></textarea>
+          </div>
+          <div class="groupcontainer">
+            <div class="mb-3 textAreaMessageForMaxTries">
+              <label for="lockMaxTriesMessage" class="form-label"
+                >Message for max tries reached</label
+              >
+              <textarea
+                class="form-control"
+                id="lockMaxTriesText"
+                rows="1"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="lockMaxTries" class="form-label"
+                >Max tries (0-1000)</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="lockMaxTries"
+                min="0"
+                max="1000"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lockFailRedirect" class="form-label"
+              >URL for combination failure redirection</label
+            >
+            <input
+              type="url"
+              class="form-control"
+              id="lockFailRedirect"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="lockBackgroundImage" class="form-label"
+              >Background image URL (*)</label
+            >
+            <input
+              type="url"
+              class="form-control"
+              id="lockBackgroundImage"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="lockExpirationDate" class="form-label"
+              >Expiration date</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="lockExpirationDate"
+              required
+            />
+          </div>
+          <div class='css-container-buttons'>
+            <button type="submit" class="btn btn-primary buttonSend btnSpace">Send</button>
+            <button type="reset"    class="btn btn-secondary buttonSend btnSpace">Clear</button>
+          </div>
+        </form>
+      </div>
+      <div class="container mt-3 dataContainer">
+        <h1 class="principalTytle">Preview</h1>
+      <div id="js-lock-container" class="css-lock-container">
+        <h1 id="js-lock-title" class="css-lock-title">Lockout Page</h1>
+  
+        <img
+          id="js-lock-image"
+          src="../assets/img/lock.png"
+          alt="Lock Track"
+          class="css-lock-image"
+        />
+        <div class="css-lock-container-button">
+          <input
+            type="text"
+            id="js-lock-combination-input"
+            placeholder="     Combination number"
+          />
+  
+          <button id="js-unlock-button" class="btn btn-primary">
+            unlock
+          </button>
+          <button id="js-clear-code" class="btn btn-secondary" type="button">
+            Clear
+          </button>
+        </div>
+        <div class="css-lock-container-hint">
+          <text id="js-lock-hint-text">Texto de la Pista</text>
+        </div>
+      </div>
+      <button type="button" id= 'js-preview-button' class="btn btn-secondary buttonSend btnPreview">Preview</button>
+    </div>
+
+    <template id="my-template">
+      <swal-title>Want to redirect to the lock resolution page??</swal-title>
+      <swal-icon type="success" color="green"></swal-icon>
+      <swal-button type="confirm">Go to Lock</swal-button>
+      <swal-button type="cancel">Back</swal-button>
+      <swal-param name="allowEscapeKey" value="false" />
+      <swal-param name="customClass" value='{ "popup": "my-popup" }' />
+      <swal-function-param name="didOpen" value="popup => console.log(popup)" />
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/configureAssistant.js"></script> 
+    <script>
+      
+    </script>
+  </body>
+</html>
